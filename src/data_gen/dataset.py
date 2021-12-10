@@ -144,8 +144,11 @@ def generate_input_mask(image_category, shape, nobgFlag=True):
 
     for key in getKpKeys(image_category)[1:]:
         index = get_kp_index_from_allkeys(key)
-        mask[:, :, index] = 1.0
-
+        try:
+            mask[:, :, index] = 1.0
+        except IndexError:
+            print(index, key, image_category, shape, nobgFlag, mask.shape)
+            raise RuntimeError
     # for last channel, background
     if nobgFlag:     mask[:, :, -1] = 0.0
     else:   mask[:, :, -1] = 1.0

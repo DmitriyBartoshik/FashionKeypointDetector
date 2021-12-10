@@ -41,10 +41,13 @@ class DataGenerator(object):
         # train_input: npfloat,  height, width, channels
         # train_gthmap: npfloat, N heatmap + 1 background heatmap,
         train_input = np.zeros((batchSize, targetHeight, targetWidth, 3), dtype=np.float)
-        train_mask = np.zeros((batchSize, targetHeight / 2, targetWidth / 2, getKpNum(self.category) ), dtype=np.float)
-        train_gthmap = np.zeros((batchSize, targetHeight / 2, targetWidth / 2, getKpNum(self.category) ), dtype=np.float)
-        train_ohem_mask = np.zeros((batchSize, targetHeight / 2, targetWidth / 2, getKpNum(self.category) ), dtype=np.float)
-        train_ohem_gthmap = np.zeros((batchSize, targetHeight / 2, targetWidth / 2, getKpNum(self.category) ), dtype=np.float)
+        train_mask = np.zeros((batchSize, targetHeight // 2, targetWidth // 2, getKpNum(self.category)), dtype=np.float)
+        train_gthmap = np.zeros((batchSize, targetHeight // 2, targetWidth // 2, getKpNum(self.category)),
+                                dtype=np.float)
+        train_ohem_mask = np.zeros((batchSize, targetHeight // 2, targetWidth // 2, getKpNum(self.category)),
+                                   dtype=np.float)
+        train_ohem_gthmap = np.zeros((batchSize, targetHeight // 2, targetWidth // 2, getKpNum(self.category)),
+                                     dtype=np.float)
 
         ## generator need to be infinite loop
         while 1:
@@ -163,8 +166,10 @@ class DataGenerator(object):
             top_x_offset = top_x - (_kpAnn.x - radius/2)
             top_y_offset = top_y - (_kpAnn.y - radius/2)
 
-            gthmp[ top_y:bottom_y, top_x:bottom_x, i] = gaussMask[top_y_offset:top_y_offset + bottom_y-top_y,
-                                                                  top_x_offset:top_x_offset + bottom_x-top_x]
+            gthmp[int(top_y):int(bottom_y), int(top_x):int(bottom_x), i] = gaussMask[int(top_y_offset):int(
+                top_y_offset + bottom_y - top_y),
+                                                                           int(top_x_offset):int(
+                                                                               top_x_offset + bottom_x - top_x)]
 
         return gthmp
 
