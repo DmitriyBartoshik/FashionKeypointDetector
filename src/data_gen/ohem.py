@@ -2,6 +2,7 @@
 import sys
 sys.path.insert(0, "../unet/")
 
+import numpy as np
 from keras.models import *
 from keras.layers import *
 from utils import np_euclidean_l2
@@ -22,7 +23,7 @@ def generate_topk_mask_ohem(input_data, gthmap, keras_model, graph, topK, image_
     ximg  = mimg[np.newaxis,:,:,:]
     xmask = mmask[np.newaxis,:,:,:]
 
-    if len(keras_model.input_layers) == 3:
+    if len(keras_model.inputs) == 3:
         # use original mask as ohem_mask
         inputs = [ximg, xmask, xmask]
     else:
