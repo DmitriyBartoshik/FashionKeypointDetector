@@ -32,12 +32,12 @@ class FashionNet(object):
         if show:
             self.model.summary()
             for layer in self.model.layers:
-                print layer.name, layer.trainable
+                print (layer.name, layer.trainable)
 
     def train(self, category, batchSize=8, epochs=20, lrschedule=False):
         trainDt = DataGenerator(category, os.path.join("../../data/train/Annotations", "train_split.csv"))
         trainGen = trainDt.generator_with_mask_ohem( graph=tf.get_default_graph(), kerasModel=self.model,
-                                    batchSize= batchSize, inputSize=(self.inputHeight, self.inputWidth),
+                                    batchSize=batchSize, inputSize=(self.inputHeight, self.inputWidth),
                                     nStackNum=self.nStackNum, flipFlag=False, cropFlag=False)
 
         normalizedErrorCallBack = NormalizedErrorCallBack("../../trained_models/", category, True)
