@@ -88,7 +88,8 @@ class DataGenerator(object):
         Load annotations from train.csv
         '''
         # Todo: check if category legal
-        self.train_img_path = "data/train"
+        # self.train_img_path = "data/train"
+        self.train_img_path = "/content/FashionKeypointDetector/data/train"
 
         # read into dataframe
         xpd = pd.read_csv(self.annfile)
