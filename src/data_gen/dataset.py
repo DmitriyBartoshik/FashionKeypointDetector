@@ -85,9 +85,9 @@ def getKpKeys(category):
                      'cuff_left_out', 'cuff_right_in',  'cuff_right_out',  'hemline_left',  'hemline_right']
     TROUSERS_KP_KEYS=['image_id',  'waistband_left', 'waistband_right', 'crotch',  'bottom_left_in',
                       'bottom_left_out', 'bottom_right_in', 'bottom_right_out']
-    BLOUSE_KP_KEYS = [ 'image_id', 'neckline_left', 'neckline_right', 'shoulder_left', 'shoulder_right',
-                       'center_front', 'armpit_left', 'armpit_right', 'top_hem_left', 'top_hem_right',
-                       'cuff_left_in', 'cuff_left_out', 'cuff_right_in', 'cuff_right_out']
+    BLOUSE_KP_KEYS = ['image_id', 'neckline_left', 'neckline_right', 'shoulder_left', 'shoulder_right',
+                      'center_front', 'armpit_left', 'armpit_right', 'top_hem_left', 'top_hem_right',
+                      'cuff_left_in', 'cuff_left_out', 'cuff_right_in', 'cuff_right_out']
     OUTWEAR_KP_KEYS= ['image_id', 'neckline_left', 'neckline_right', 'shoulder_left', 'shoulder_right',
                       'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in',
                       'cuff_left_out', 'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right']
@@ -132,6 +132,9 @@ def get_kp_index_from_allkeys(kpname):
                    'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right', 'waistband_left', 'waistband_right',
                    'hemline_left', 'hemline_right', 'crotch', 'bottom_left_in', 'bottom_left_out', 'bottom_right_in', 'bottom_right_out']
 
+    ALL_KP_KEYS = ['neckline_left', 'neckline_right', 'shoulder_left', 'shoulder_right',
+                   'center_front', 'armpit_left', 'armpit_right', 'top_hem_left', 'top_hem_right',
+                   'cuff_left_in', 'cuff_left_out', 'cuff_right_in', 'cuff_right_out']
     return ALL_KP_KEYS.index(kpname)
 
 
