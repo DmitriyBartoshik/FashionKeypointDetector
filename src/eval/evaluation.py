@@ -144,7 +144,7 @@ class Evaluation(object):
     def _net_inference_flip(self, imgFile, imgCategory):
         import cv2
         from data_process import normalize_image, pad_image_inference
-        assert (len(self.net.input_layers) > 1), "input layer need to more than 1"
+        assert (len(self.net._input_layers) > 1), "input layer need to more than 1"
 
         batch_size =2
 
@@ -165,12 +165,12 @@ class Evaluation(object):
         input_mask[1,:,:,:] = mask
 
         # inference
-        if len(self.net.input_layers) == 2:
+        if len(self.net._input_layers) == 2:
             heatmap = self.net.predict([input_img, input_mask])
-        elif len(self.net.input_layers) == 3:
+        elif len(self.net._input_layers) == 3:
             heatmap = self.net.predict([input_img, input_mask, input_mask])
         else:
-            assert (0), str(len(self.net.input_layers)) + " should be 2 or 3 "
+            assert (0), str(len(self.net._input_layers)) + " should be 2 or 3 "
 
         # sum heatmap
         avgheatmap = self._heatmap_sum(heatmap)
