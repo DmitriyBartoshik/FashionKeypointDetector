@@ -21,7 +21,7 @@ from data_process import pad_image_inference
 class Evaluation(object):
     def __init__(self, category, modelFile):
         self.category = category
-        self.train_img_path = "../../data/train"
+        self.train_img_path = "../../data/evaluation"
         if modelFile is not None:
             self._initialize(modelFile)
 
@@ -63,7 +63,7 @@ class Evaluation(object):
         '''
         Load annotations from train.csv
         '''
-        self.annfile = os.path.join("../../data/train/Annotations", "val_split.csv")
+        self.annfile = os.path.join("../../data/validation/Annotations", "validation.csv")
 
         # read into dataframe
         xpd = pd.read_csv(self.annfile)
