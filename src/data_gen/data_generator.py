@@ -54,7 +54,12 @@ class DataGenerator(object):
             count = 0
             for _index, _row in xdf.iterrows():
                 xindex = count % batchSize
-                xinput, xhmap = self._prcoess_img(_row, inputSize, rotateFlag, flipFlag, cropFlag, nobgFlag=True)
+
+                try:
+                    xinput, xhmap = self._prcoess_img(_row, inputSize, rotateFlag, flipFlag, cropFlag, nobgFlag=True)
+
+                except Exception:
+                    continue
                 xmask = generate_input_mask(_row['image_category'],
                                             (targetHeight, targetWidth, getKpNum(self.category)))
 
