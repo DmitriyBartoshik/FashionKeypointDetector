@@ -21,7 +21,7 @@ from data_process import pad_image_inference
 class Evaluation(object):
     def __init__(self, category, modelFile):
         self.category = category
-        self.train_img_path = "../../data/evaluation"
+        self.train_img_path = "../../data/validation"
         if modelFile is not None:
             self._initialize(modelFile)
 
